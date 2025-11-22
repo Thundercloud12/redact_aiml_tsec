@@ -1,11 +1,11 @@
-# Hackathon Project
+# Redact AIML TSEC - Hackathon Project
 
-A Python project for the hackathon.
+A Python project for AI/ML security and redaction capabilities.
 
 ## Project Structure
 
 ```
-hacakthon/
+redact_aiml_tsec/
 ├── main.py              # Main entry point
 ├── requirements.txt     # Project dependencies
 ├── src/                 # Source code modules
@@ -25,7 +25,12 @@ hacakthon/
 
 ### Installation
 
-1. Clone or download this project
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/Thundercloud12/redact_aiml_tsec.git
+   cd redact_aiml_tsec
+   ```
+
 2. Install dependencies:
    ```bash
    pip install -r requirements.txt
@@ -55,3 +60,7 @@ python -m unittest tests.test_main
 Add your project modules in the `src/` directory and corresponding tests in the `tests/` directory.
 
 Update `requirements.txt` with any new dependencies you add to the project.
+
+## Purpose
+
+This project focuses on AI/ML security and text redaction capabilities for the hackathon.
