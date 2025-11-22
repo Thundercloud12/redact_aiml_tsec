@@ -936,10 +936,427 @@ html {
     justify-content: center;
     order: 2;
   }
+}
+
+/* Analysis Modal Styles */
+.analysis-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.analysis-modal {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fffe 100%);
+  border-radius: 25px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(34, 139, 34, 0.1);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(50px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.analysis-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(34, 139, 34, 0.1);
+}
+
+.analysis-header h3 {
+  color: #1e4d1e;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: rgba(34, 139, 34, 0.1);
+  color: #1e4d1e;
+}
+
+.file-info {
+  margin-bottom: 2rem;
+}
+
+.file-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(34, 139, 34, 0.05);
+  border-radius: 15px;
+  border-left: 4px solid #228B22;
+}
+
+.file-name {
+  font-weight: 600;
+  color: #1e4d1e;
+  font-size: 1.1rem;
+}
+
+.file-meta {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Analyzing State */
+.analyzing-state {
+  text-align: center;
+  padding: 2rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(34, 139, 34, 0.1);
+  border-left: 4px solid #228B22;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.analyzing-state p {
+  font-size: 1.2rem;
+  color: #1e4d1e;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.analysis-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.analysis-steps .step {
+  padding: 0.5rem;
+  color: #666;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.analysis-steps .step.active {
+  color: #228B22;
+  font-weight: 600;
+}
+
+/* Error State */
+.error-state {
+  text-align: center;
+  padding: 2rem;
+}
+
+.error-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.error-state h4 {
+  color: #dc3545;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.error-state p {
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.retry-btn {
+  background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-btn:hover {
+  background: linear-gradient(135deg, #1e7e1e 0%, #2eb82e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(34, 139, 34, 0.3);
+}
+
+/* Results Container */
+.results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.validation-section,
+.disease-section {
+  padding: 1.5rem;
+  border-radius: 15px;
+  border: 1px solid rgba(34, 139, 34, 0.1);
+}
+
+.validation-section {
+  background: rgba(34, 139, 34, 0.02);
+}
+
+.disease-section {
+  background: rgba(50, 205, 50, 0.02);
+}
+
+.validation-section h4,
+.disease-section h4 {
+  color: #1e4d1e;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.validation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.validation-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  background: white;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.validation-item.success {
+  border-left: 4px solid #28a745;
+  color: #1e4d1e;
+}
+
+.validation-item.error {
+  border-left: 4px solid #dc3545;
+  color: #dc3545;
+}
+
+.validation-item .icon {
+  font-size: 1.2rem;
+}
+
+.warnings {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(255, 193, 7, 0.1);
+  border-radius: 10px;
+  border-left: 4px solid #ffc107;
+}
+
+.warnings h5 {
+  color: #856404;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.warning {
+  color: #856404;
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}
+
+/* Disease Results */
+.disease-result {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.disease-detected,
+.healthy-plant {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 15px;
+}
+
+.disease-detected {
+  background: rgba(220, 53, 69, 0.05);
+  border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+.healthy-plant {
+  background: rgba(40, 167, 69, 0.05);
+  border: 1px solid rgba(40, 167, 69, 0.2);
+}
+
+.disease-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.status-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.disease-header h5,
+.healthy-plant h5 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.disease-detected h5 {
+  color: #dc3545;
+}
+
+.healthy-plant h5 {
+  color: #28a745;
+}
+
+.disease-header p,
+.healthy-plant p {
+  margin: 0.3rem 0 0 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.severity-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-left: auto;
+}
+
+.severity-badge.mild {
+  background: #28a745;
+  color: white;
+}
+
+.severity-badge.moderate {
+  background: #ffc107;
+  color: #333;
+}
+
+.severity-badge.severe {
+  background: #dc3545;
+  color: white;
+}
+
+.treatments {
+  padding: 1.5rem;
+  background: rgba(34, 139, 34, 0.05);
+  border-radius: 15px;
+  border-left: 4px solid #228B22;
+}
+
+.treatments h5 {
+  color: #1e4d1e;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.treatments ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.treatments li {
+  padding: 0.5rem 0;
+  color: #2c5f2d;
+  font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.treatments li::before {
+  content: '🌿';
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .analysis-overlay {
+    padding: 1rem;
+  }
   
-  .placeholder-image {
-    width: 250px;
-    height: 250px;
+  .analysis-modal {
+    padding: 1.5rem;
+    max-height: 95vh;
+  }
+  
+  .validation-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .disease-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .severity-badge {
+    margin-left: 0;
+    align-self: flex-start;
   }
 }
 
