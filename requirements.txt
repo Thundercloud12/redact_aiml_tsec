@@ -1,6 +1,4 @@
 # Project dependencies
-# Add your project dependencies here
-# Example:
-# requests==2.31.0
-# numpy==1.24.3
-# pandas==2.0.3
+streamlit>=1.28.0
+Pillow>=10.0.0
+hashlib; python_version < '3.0'  # hashlib is built-in for Python 3+
